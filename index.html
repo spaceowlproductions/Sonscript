@@ -14,7 +14,8 @@
             <p>Second thing typed.</p>
 
         </div>
-        <textarea type="text" id="InputField"></textarea>    
+        <textarea type="text" id="InputField"></textarea> 
+        <button id="submit">Shift+Enter to Submit</button>   
     </div>
 </body>
 <script>
@@ -31,12 +32,17 @@
     }
     #InputField{
         background-color: darkslategray;
-        width: 97%;
+        width: 97vw;
         color: aliceblue;
         margin-bottom: 10px;
         margin-right: 10px;
         height: 19px;
     }
+
+    #InputField:focus{
+        outline-color:darkseagreen;
+    }
+
     #ArchitectText{
         color: aliceblue;
         overflow-y: scroll;
@@ -47,6 +53,14 @@
         flex-direction: column;
         bottom: 0;
         position: absolute;
+        width: 97vw;
+    }
+    #submit{
+        margin-bottom: 10px;
+        font-style: italic;
+        background-color: rgb(20, 53, 82);
+        color:aliceblue;
+        align-self: center;
     }
 
     html{
