@@ -12,19 +12,11 @@
         <div id="ArchitectText">
             <p>Where in the story would you like to start? Areas, Items, Characters, or Variables?</p>
             <p>Second thing typed.</p>
-
         </div>
         <textarea type="text" id="InputField"></textarea> 
-        <button id="submit">Shift+Enter to Submit</button>   
+        <button id="submit" onclick="submitText()">Submit (shift + enter)</button>   
     </div>
 </body>
-<script>
-    document.getElementById('InputField').addEventListener('keyup', function () {
-        this.style.height = 0;
-        this.style.height = this.scrollHeight + 'px';
-        }, false);
-
-</script>
 <style>
     #TopBar{
         color:darkseagreen;
@@ -37,6 +29,7 @@
         margin-bottom: 10px;
         margin-right: 10px;
         height: 19px;
+        resize: none;
     }
 
     #InputField:focus{
@@ -69,4 +62,35 @@
     }
 
 </style>
+<script>
+    var shiftHeld = false;
+
+    document.getElementById('InputField').addEventListener('keyup', function () {
+        this.style.height = 0;
+        this.style.height = this.scrollHeight + 'px';
+        }, false);
+
+    document.addEventListener("keydown", (event) => {
+        if (event.shiftKey){
+            shiftHeld = true;
+        }
+        if(event.code == "Enter" && shiftHeld){
+            event.preventDefault();
+            submitText();
+        }
+    });
+
+    document.addEventListener("keyup", (event) => {
+        if (event.shiftKey){
+            shiftHeld = false;
+        }
+    });
+
+    function submitText()
+    {
+        //fake submitting for now
+        console.log("Submitted!");
+        document.getElementById('InputField').value = "";
+    }
+</script>
 </html>
