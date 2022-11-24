@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sonscript Game Maker</title>
+</head>
+<body>
+    <div class="Stack">
+        <div id="ArchitectText">
+            <div>
+                <p>Where in the story would you like to start? Areas, Items, Characters, or Variables?</p>
+            </div>
+        </div>
+        <textarea type="text" id="InputField"></textarea> 
+        <button id="submit" onclick="submitText()">Submit (shift + enter)</button>   
+    </div>
+</body>
+<style>
+    #TopBar{
+        color:darkseagreen;
+        background-color: rgba(0, 0, 0, 0.642);
+    }
+    #InputField{
+        background-color: darkslategray;
+        color: aliceblue;
+        resize: none;
+    }
+
+    #InputField:focus{
+        outline-color:darkseagreen;
+    }
+
+    #ArchitectText{
+        color: aliceblue;
+        background-color: gray;
+        overflow-y: auto;
+        max-height: 100%;
+
+        overflow: auto;
+        display: flex;
+        flex-direction: column-reverse;
+
+    }
+
+    .Stack{
+        display: grid;
+        grid-template-rows: 4fr 2fr .4fr;
+        height: 100vh;
+        width: 100vw;
+        position: absolute;
+    }
+
+    #submit{
+        font-style: italic;
+        background-color: rgb(20, 53, 82);
+        color:aliceblue;
+        min-width: 30px;
+    }
+
+    html{
+        background-color: black;
+        overflow: hidden;
+    }
+
+</style>
+<script>
+    var shiftHeld = false;
+
+    document.addEventListener("keydown", (event) => {
+        if (event.shiftKey){
+            shiftHeld = true;
+        }
+        if(event.code == "Enter" && shiftHeld){
+            event.preventDefault();
+            submitText();
+        }
+    });
+
+    document.addEventListener("keyup", (event) => {
+        if (event.shiftKey){
+            shiftHeld = false;
+        }
+    });
+
+    function submitText()
+    {
+        //fake submitting for now
+        console.log("Submitted!");
+        document.getElementById('InputField').value = "";
+    }
+</script>
+</html>
